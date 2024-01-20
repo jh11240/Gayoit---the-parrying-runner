@@ -17,16 +17,16 @@ public class soundManager : MonoBehaviour
     public int stageInt=3;
 
     private static soundManager instance;
-    [Header("»ç¿îµå µî·Ï")]
-    [SerializeField] Sounds[] bgmSounds;            //ÀÌ°Ô cd ¿ªÇÒ
+    [Header("ì‚¬ìš´ë“œ ë“±ë¡")]
+    [SerializeField] Sounds[] bgmSounds;            //ì´ê²Œ cd ì—­í• 
 
-    [Header("È¿°úÀ½ µî·Ï")]
+    [Header("íš¨ê³¼ìŒ ë“±ë¡")]
     [SerializeField] Sounds[] effects;
 
-    [Header("»ç¿îµå Àç»ı")]
-    [SerializeField] AudioSource bgmPlay;           //ÇÃ·¹ÀÌ¾î
+    [Header("ì‚¬ìš´ë“œ ì¬ìƒ")]
+    [SerializeField] AudioSource bgmPlay;           //í”Œë ˆì´ì–´
     
-    [Header("È¿°úÀ½ Àç»ı")]
+    [Header("íš¨ê³¼ìŒ ì¬ìƒ")]
     [SerializeField] AudioSource effectPlay;
 
 
@@ -74,7 +74,7 @@ public class soundManager : MonoBehaviour
         if (arg0.buildIndex == 0)
         {
             stageInt = 3;
-            bgmPlay.clip = bgmSounds[0].clip;       //clipÀÌ À½¿ø ¼Ò½º
+            bgmPlay.clip = bgmSounds[0].clip;       //clipì´ ìŒì› ì†ŒìŠ¤
         }
         else if (arg0.buildIndex == 1)
         {
@@ -132,7 +132,7 @@ public class soundManager : MonoBehaviour
 
 
 
-        bgmPlay.Play();         //½ºÇÇÄ¿¿¡¼­ ÇÃ·¹ÀÌ
+        bgmPlay.Play();         //ìŠ¤í”¼ì»¤ì—ì„œ í”Œë ˆì´
     }
 
     public void effectPlayC(int sound)
@@ -146,12 +146,12 @@ public class soundManager : MonoBehaviour
     }
     public void playerEffect(int success)
     {
-        if (success == 0) effectPlay.clip = effects[1].clip;    //ÆĞ¸µ
-        else if (success == 1) effectPlay.clip = effects[2].clip;   //ÆĞ¸µ½ÇÆĞ
-        else if (success == 2) effectPlay.clip = effects[3].clip;   //ÄÚÀÎ
-        else if (success == 3) effectPlay.clip = effects[4].clip;   //µş±ï
-        else if (success == 4) effectPlay.clip = effects[5].clip;   //°ÔÀÓ¿À¹ö
-        else if (success == 5) effectPlay.clip = effects[6].clip;   //º¸½ºÃ³Ä¡
+        if (success == 0) effectPlay.clip = effects[1].clip;    //íŒ¨ë§
+        else if (success == 1) effectPlay.clip = effects[2].clip;   //íŒ¨ë§ì‹¤íŒ¨
+        else if (success == 2) effectPlay.clip = effects[3].clip;   //ì½”ì¸
+        else if (success == 3) effectPlay.clip = effects[4].clip;   //ë”¸ê¹
+        else if (success == 4) effectPlay.clip = effects[5].clip;   //ê²Œì„ì˜¤ë²„
+        else if (success == 5) effectPlay.clip = effects[6].clip;   //ë³´ìŠ¤ì²˜ì¹˜
         
 
         effectPlay.loop = false;
@@ -159,7 +159,7 @@ public class soundManager : MonoBehaviour
 
     }
 
-    public void nextStage() //´©°¡¾¸..? enemy°¡¾´´Ù º´½Å¾Æ
+    public void nextStage() //ëˆ„ê°€ì”€..? enemyê°€ì“´ë‹¤ ë³‘ì‹ ì•„
     {
         SceneManager.LoadScene(stageInt);
     }
