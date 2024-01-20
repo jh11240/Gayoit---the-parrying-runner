@@ -5,11 +5,11 @@ using TMPro;
 
 public class BossRush : MonoBehaviour
 {
-    //Á¡¼ö
+    //ì ìˆ˜
     public TextMeshProUGUI score;
-    //½ºÆù À§Ä¡
+    //ìŠ¤í° ìœ„ì¹˜
     public Transform tr;
-    //ÇÃ·¹ÀÌ¾î
+    //í”Œë ˆì´ì–´
     public GameObject player;
     public objectManager objManager;
     public GameObject healthBar;
@@ -43,7 +43,7 @@ public class BossRush : MonoBehaviour
 
     public List<GameObject> bosses;
 
-    //º¸½º°¡ ¸î»çÀÌÅ¬ Á×¾ú´ÂÁö Ã¼Å©
+    //ë³´ìŠ¤ê°€ ëª‡ì‚¬ì´í´ ì£½ì—ˆëŠ”ì§€ ì²´í¬
     private int phase = 1;
     public int Phase { get => phase; set => phase = value; }
 
@@ -102,28 +102,28 @@ public class BossRush : MonoBehaviour
 
     public void OnEnable()
     {
-        //ÃÊ±âÈ­
+        //ì´ˆê¸°í™”
         sceneManager.Instance.BossKilled = 0;
         InvokeRepeating("checkDeadBossAmount",0f,0.5f);
         respawnBoss();
     }
 
-    //º¸½º°¡ ¸î¸¶¸® Á×¾ú´ÂÁö Ã¼Å©
+    //ë³´ìŠ¤ê°€ ëª‡ë§ˆë¦¬ ì£½ì—ˆëŠ”ì§€ ì²´í¬
     public void checkDeadBossAmount()
     {
         int bossKilled = sceneManager.Instance.BossKilled;
-        score.text = bossKilled.ToString()+"¸¶¸®!";
-        //ÇÑ ½ÎÀÌÅ¬ÀÌ 12¸¶¸®ÀÌ¹Ç·Î 12¸¶¸®¸¸ Á×ÀÌ¸é ´ÙÀ½ ÆäÀÌÁî·Î ³Ñ¾î°¨
+        score.text = bossKilled.ToString()+"ë§ˆë¦¬!";
+        //í•œ ì‹¸ì´í´ì´ 12ë§ˆë¦¬ì´ë¯€ë¡œ 12ë§ˆë¦¬ë§Œ ì£½ì´ë©´ ë‹¤ìŒ í˜ì´ì¦ˆë¡œ ë„˜ì–´ê°
         phase=bossKilled/12 >phase? bossKilled/12:phase;
     }
-    //boss ¼ÒÈ¯ÇÏ´Â ÇÔ¼ö
+    //boss ì†Œí™˜í•˜ëŠ” í•¨ìˆ˜
     public void respawnBoss()
     {
         foreach(GameObject elem in bosses)
         {
             elem.SetActive(false);
         }
-        //Å¬¸®¾î½Ã ºÒ·¿ ²ô±â
+        //í´ë¦¬ì–´ì‹œ ë¶ˆë › ë„ê¸°
         GameObject[] bullets;
         bullets = GameObject.FindGameObjectsWithTag("enemyBullet");
         int bulletsNumber = bullets.Length;
@@ -136,7 +136,7 @@ public class BossRush : MonoBehaviour
         int randBoss = Random.Range(0,12);
         bosses[randBoss].SetActive(true);
         bosses[randBoss].transform.position = tr.position;
-        //Áö±İ ÆäÀÌ½º¸¸Å­ Ã¼·Â Áõ°¡
+        //ì§€ê¸ˆ í˜ì´ìŠ¤ë§Œí¼ ì²´ë ¥ ì¦ê°€
         bosses[randBoss].GetComponent<enemy>().bossHealth = phase;
         bosses[randBoss].GetComponent<enemy>().maxBossHealth = phase;
 
@@ -148,7 +148,7 @@ public class BossRush : MonoBehaviour
         enemyLogic.healthBarReal = healthBarReal;
 
         Player playerlogic = player.GetComponent<Player>();
-        Debug.Log("respawnBoss½ÇÇà");
+        Debug.Log("respawnBossì‹¤í–‰");
         enemyLogic.speed = 3;
         rigid.velocity = new Vector2(0, enemyLogic.speed * (-1));
 
